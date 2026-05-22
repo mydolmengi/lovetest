@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content=
+"width=device-width,
+initial-scale=1.0">
+
+<title>
+애정테스트
+</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+font-family:
+'Apple SD Gothic Neo',
+'Pretendard',
+sans-serif;
+}
+
+body{
+
+min-height:100dvh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+padding:10px;
+
+background:
+
+linear-gradient(
+180deg,
+#fff5f8,
+#ffe6f0
+);
+
+position:relative;
+
+}
+
+
+body::before{
+
+content:"💖";
+
+position:absolute;
+
+font-size:120px;
+
+left:-20px;
+
+top:-10px;
+
+opacity:.08;
+
+}
+
+body::after{
+
+content:"💗";
+
+position:absolute;
+
+font-size:120px;
+
+right:-20px;
+
+bottom:-20px;
+
+opacity:.08;
+
+}
+
+
+/* 페이지 */
+
+.page{
+
+display:none;
+
+width:100%;
+
+min-height:100dvh;
+
+padding:14px;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-align:center;
+
+position:relative;
+
+}
+
+.active{
+display:flex;
+}
+
+
+/* 카드 */
+
+.card{
+
+width:100%;
+
+max-width:350px;
+
+background:
+
+rgba(
+255,
+255,
+255,
+0.95
+);
+
+padding:
+
+clamp(
+18px,
+4vw,
+26px
+);
+
+border-radius:26px;
+
+box-shadow:
+
+0 10px 24px
+
+rgba(
+255,
+120,
+170,
+.15
+);
+
+backdrop-filter:
+blur(10px);
+
+z-index:2;
+
+}
+
+
+/* 제목 */
+
+h1{
+
+font-size:
+
+clamp(
+34px,
+8vw,
+44px
+);
+
+color:#ff4f95;
+
+margin-bottom:10px;
+
+}
+
+
+h2{
+
+font-size:
+
+clamp(
+18px,
+5vw,
+24px
+);
+
+color:#666;
+
+margin-bottom:16px;
+
+}
+
+
+/* 질문 */
+
+.question{
+
+background:#ffe4ef;
+
+padding:14px;
+
+border-radius:18px;
+
+font-size:
+
+clamp(
+16px,
+4vw,
+20px
+);
+
+font-weight:700;
+
+line-height:1.4;
+
+word-break:keep-all;
+
+color:#ff4f95;
+
+margin-bottom:18px;
+
+}
+
+
+/* 입력 */
+
+input{
+
+width:100%;
+
+padding:13px;
+
+border:none;
+
+border-radius:16px;
+
+font-size:15px;
+
+background:#fff7fa;
+
+margin-bottom:14px;
+
+outline:none;
+
+}
+
+input:focus{
+
+border:
+2px solid
+#ff9ec2;
+
+}
+
+
+/* 버튼 */
+
+button{
+
+width:100%;
+
+padding:12px;
+
+border:none;
+
+border-radius:999px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff7aad,
+#ff4f95
+);
+
+color:white;
+
+font-size:15px;
+
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+
+/* 설명 */
+
+.guideBox{
+
+background:white;
+
+padding:14px;
+
+border-radius:18px;
+
+line-height:1.6;
+
+font-size:
+
+clamp(
+13px,
+3.5vw,
+15px
+);
+
+margin-bottom:14px;
+
+}
+
+
+/* 결과 */
+
+.message{
+
+font-size:
+
+clamp(
+22px,
+6vw,
+30px
+);
+
+line-height:1.4;
+
+background:white;
+
+padding:16px;
+
+border-radius:20px;
+
+margin-bottom:16px;
+
+}
+
+.success{
+color:#ff4f95;
+}
+
+.fail{
+color:#555;
+}
+
+
+/* 비 */
+
+.rain{
+
+position:absolute;
+
+top:-50px;
+
+animation:
+fall linear infinite;
+
+z-index:1;
+
+}
+
+@keyframes fall{
+
+to{
+
+transform:
+translateY(
+110vh
+);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- 표지 -->
+
+<div class="page active"
+id="cover">
+
+<div class="card">
+
+<h1>
+애정테스트
+</h1>
+
+<h2>
+내마음을 맞춰봐~!
+</h2>
+
+<button
+onclick=
+"showPage(
+'guidePage'
+)">
+시작
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- 설명 -->
+
+<div
+class="page"
+
+id=
+"guidePage">
+
+<div class="card">
+
+<h1
+style=
+"
+font-size:
+clamp(
+24px,
+6vw,
+30px
+);
+">
+
+📖 설명서
+
+</h1>
+
+<div
+class=
+"guideBox">
+
+💖 지금부터
+나에 대해<br>
+얼만큼 아는지
+테스트 해볼게!
+
+<br><br>
+
+✨ 하는 방법
+
+<br><br>
+
+1. A가 질문 보고 답 입력
+
+<br><br>
+
+2. 입력 후 B에게 넘겨준다
+
+<br><br>
+
+3. B는 답을 유추한다
+
+<br><br>
+
+🍀 행운을 빌지~
+럭키 🍀
+
+</div>
+
+<button
+onclick=
+"startTest()">
+
+테스트 시작
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- 페이지1 -->
+
+<div class="page"
+id="page1">
+
+<div class="card">
+
+<div
+class="question"
+
+id=
+"questionText">
+
+</div>
+
+<input
+
+id=
+"answerA"
+
+placeholder=
+"답 입력">
+
+<button
+onclick=
+"saveAnswer()">
+
+확인
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- 페이지2 -->
+
+<div class="page"
+id=
+"page2">
+
+<div class="card">
+
+<h2>
+자! 내 마음을 맞춰봐~
+</h2>
+
+<div
+class="question"
+
+id=
+"questionAgain">
+
+</div>
+
+<input
+
+id=
+"guess"
+
+placeholder=
+"정답은?">
+
+<button
+onclick=
+"checkAnswer()">
+
+확인
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- 성공 -->
+
+<div class="page"
+id=
+"successPage">
+
+<div id=
+"heartRain">
+</div>
+
+<div class="card">
+
+<div class=
+"message success">
+
+흥,
+애정테스트<br>
+통과얌! 💖
+
+</div>
+
+<button
+onclick=
+"againTest()">
+
+또 테스트하기
+
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- 실패 -->
+
+<div class="page"
+id=
+"failPage">
+
+<div id=
+"fireRain">
+</div>
+
+<div class="card">
+
+<div class=
+"message fail">
+
+....실망이다...
+🔥
+
+</div>
+
+<button
+onclick=
+"retry()">
+
+다시하기
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const questions=[
+"내가 좋아하는 과일은?",
+"오늘 내가 먹고 싶은 건?",
+"내가 갑자기 사라지면 있을 곳은?",
+"내가 무인도에 가져갈 한 가지는?",
+"내가 세상에서 제일 편해하는 장소는?",
+"내가 눈 감고도 고를 간식은?",
+"내가 하루 종일 봐도 안 질릴 풍경은?",
+"내가 되고 싶은 동물은?",
+"내가 나를 색으로 표현하면?",
+"내가 나를 계절로 표현하면?",
+"내가 나를 날씨로 표현하면?",
+"내가 비밀 아지트로 삼고 싶은 곳은?",
+"내가 행복하다고 느끼는 순간은?",
+"내가 평생 듣고 싶은 말은?"
+];
+
+let currentQuestion="";
+let previousQuestion="";
+let correctAnswer="";
+
+function showPage(id){
+document
+.querySelectorAll(".page")
+.forEach(
+p=>p.classList.remove("active")
+);
+
+document
+.getElementById(id)
+.classList.add("active");
+}
+
+function startTest(){
+
+let available=
+questions.filter(
+q=>q!==previousQuestion
+);
+
+currentQuestion=
+available[
+Math.floor(
+Math.random()
+*
+available.length
+)
+];
+
+previousQuestion=
+currentQuestion;
+
+questionText.innerText=
+currentQuestion;
+
+questionAgain.innerText=
+currentQuestion;
+
+answerA.value="";
+guess.value="";
+
+showPage("page1");
+}
+
+function saveAnswer(){
+
+correctAnswer=
+answerA.value
+.trim()
+.toLowerCase();
+
+if(correctAnswer===""){
+alert("답 입력!");
+return;
+}
+
+showPage("page2");
+}
+
+function checkAnswer(){
+
+let user=
+guess.value
+.trim()
+.toLowerCase();
+
+if(user===correctAnswer){
+
+showPage(
+"successPage"
+);
+
+heartEffect();
+
+}else{
+
+showPage(
+"failPage"
+);
+
+fireEffect();
+
+}
+
+}
+
+function retry(){
+
+guess.value="";
+
+showPage(
+"page2"
+);
+
+}
+
+function againTest(){
+
+correctAnswer="";
+
+startTest();
+
+}
+
+function heartEffect(){
+
+heartRain.innerHTML="";
+
+for(let i=0;i<45;i++){
+
+let h=
+document.createElement(
+"div"
+);
+
+h.className="rain";
+
+h.innerHTML="💖";
+
+h.style.left=
+Math.random()*100+"vw";
+
+h.style.fontSize=
+(18+
+Math.random()*18)
++"px";
+
+h.style.animationDuration=
+(2+
+Math.random()*2)
++"s";
+
+heartRain.appendChild(h);
+
+}
+
+}
+
+function fireEffect(){
+
+fireRain.innerHTML="";
+
+for(let i=0;i<45;i++){
+
+let f=
+document.createElement(
+"div"
+);
+
+f.className="rain";
+
+f.innerHTML="🔥";
+
+f.style.left=
+Math.random()*100+"vw";
+
+f.style.fontSize=
+(18+
+Math.random()*18)
++"px";
+
+f.style.animationDuration=
+(2+
+Math.random()*2)
++"s";
+
+fireRain.appendChild(f);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
