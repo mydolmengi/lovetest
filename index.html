@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>애정테스트</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:
+'Apple SD Gothic Neo',
+'Pretendard',
+sans-serif;
+}
+
+body{
+
+background:
+linear-gradient(
+180deg,
+#fff4f8 0%,
+#ffe6f0 100%
+);
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+}
+
+/* 배경 하트 */
+
+body::before{
+
+content:"💖";
+
+position:absolute;
+
+font-size:250px;
+
+opacity:.08;
+
+left:-40px;
+
+top:-20px;
+
+filter:blur(2px);
+
+}
+
+body::after{
+
+content:"💗";
+
+position:absolute;
+
+font-size:220px;
+
+opacity:.08;
+
+right:-30px;
+
+bottom:-40px;
+
+filter:blur(2px);
+
+}
+
+
+/* 페이지 */
+
+.page{
+
+display:none;
+
+width:100%;
+
+height:100vh;
+
+padding:25px;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+position:relative;
+
+text-align:center;
+
+}
+
+.active{
+display:flex;
+}
+
+
+/* 카드 */
+
+.card{
+
+width:100%;
+
+max-width:430px;
+
+background:
+
+rgba(
+255,
+255,
+255,
+0.94
+);
+
+backdrop-filter:
+blur(12px);
+
+padding:34px;
+
+border-radius:34px;
+
+box-shadow:
+
+0 14px 35px
+
+rgba(
+255,
+110,
+160,
+.15
+);
+
+z-index:2;
+
+}
+
+
+/* 제목 */
+
+h1{
+
+font-size:54px;
+
+font-weight:800;
+
+color:#ff4f95;
+
+margin-bottom:12px;
+
+}
+
+h2{
+
+font-size:28px;
+
+color:#666;
+
+margin-bottom:20px;
+
+}
+
+
+/* 질문 */
+
+.question{
+
+background:#ffe4ef;
+
+padding:18px;
+
+border-radius:25px;
+
+font-size:24px;
+
+font-weight:700;
+
+color:#ff4f95;
+
+margin-bottom:28px;
+
+box-shadow:
+
+0 4px 10px
+
+rgba(
+255,
+120,
+170,
+.12
+);
+
+}
+
+
+/* 입력 */
+
+input{
+
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:#fff7fa;
+
+font-size:17px;
+
+outline:none;
+
+margin-bottom:18px;
+
+box-shadow:
+
+inset 0 2px 8px
+
+rgba(
+255,
+120,
+170,
+.1
+);
+
+}
+
+input:focus{
+
+border:
+2px solid
+#ff8db8;
+
+}
+
+
+/* 버튼 */
+
+button{
+
+padding:16px 38px;
+
+border:none;
+
+border-radius:999px;
+
+background:
+
+linear-gradient(
+90deg,
+#ff7aad,
+#ff4f95
+);
+
+color:white;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:
+
+0 8px 18px
+
+rgba(
+255,
+80,
+150,
+.25
+);
+
+}
+
+button:hover{
+
+transform:
+
+translateY(-3px)
+
+scale(1.03);
+
+}
+
+
+/* 설명서 */
+
+.guideBox{
+
+background:white;
+
+padding:25px;
+
+border-radius:28px;
+
+line-height:1.9;
+
+font-size:18px;
+
+color:#666;
+
+box-shadow:
+
+0 10px 24px
+
+rgba(
+255,
+120,
+170,
+.14
+);
+
+margin-bottom:20px;
+
+}
+
+
+/* 결과 */
+
+.message{
+
+font-size:34px;
+
+font-weight:800;
+
+background:white;
+
+padding:24px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 10px 20px
+
+rgba(
+255,
+120,
+170,
+.15
+);
+
+margin-bottom:20px;
+
+}
+
+.success{
+color:#ff4f95;
+}
+
+.fail{
+color:#555;
+}
+
+
+/* 비 효과 */
+
+.rain{
+
+position:absolute;
+
+top:-50px;
+
+animation:
+fall linear infinite;
+
+z-index:1;
+
+}
+
+@keyframes fall{
+
+to{
+
+transform:
+translateY(
+110vh
+);
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<!-- 표지 -->
+
+<div
+class="page active"
+id="cover">
+
+<div class="card">
+
+<h1>
+애정테스트
+</h1>
+
+<h2>
+내 마음을 맞춰봐~!
+</h2>
+
+<button
+onclick="
+showPage(
+'guidePage'
+)">
+시작
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- 설명서 -->
+
+<div
+class="page"
+id="guidePage">
+
+<div class="card">
+
+<h1
+style="
+font-size:42px;
+">
+
+📖 설명서
+
+</h1>
+
+<div
+class="guideBox">
+
+💖 지금부터
+나에 대해
+얼만큼 아는지<br>
+테스트 해볼게!
+
+<br><br>
+
+✨ 하는 방법
+
+<br><br>
+
+1. A가 먼저
+질문을 보고
+답을 입력한다.
+
+<br><br>
+
+2. 답 입력 후
+B에게 넘겨준다.
+
+<br><br>
+
+3. B는
+A가 적었을 답을
+유추해서 적는다.
+
+<br><br>
+
+🍀 행운을 빌지~
+럭키 🍀
+
+</div>
+
+<button
+onclick="
+startTest()
+">
+
+테스트 시작
+
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- 페이지1 -->
+
+<div
+class="page"
+id="page1">
+
+<div class="card">
+
+<div
+class="question"
+id="questionText">
+
+</div>
+
+<input
+
+id="answerA"
+
+placeholder=
+"답 입력"
+
+>
+
+<button
+onclick="
+saveAnswer()
+">
+
+확인
+
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- 페이지2 -->
+
+<div
+class="page"
+id="page2">
+
+<div class="card">
+
+<h2>
+
+자! 내 마음을
+맞춰봐~
+
+</h2>
+
+<div
+class="question"
+id="questionAgain">
+
+</div>
+
+<input
+
+id="guess"
+
+placeholder=
+"정답은?"
+
+>
+
+<button
+onclick="
+checkAnswer()
+">
+
+확인
+
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- 성공 -->
+
+<div
+class="page"
+id="successPage">
+
+<div id="heartRain">
+</div>
+
+<div class="card">
+
+<div
+class="
+message
+success
+">
+
+흥,
+애정테스트<br>
+통과얌! 💖
+
+</div>
+
+<button
+onclick="
+againTest()
+">
+
+또 테스트하기
+
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<!-- 실패 -->
+
+<div
+class="page"
+id="failPage">
+
+<div id="fireRain">
+</div>
+
+<div class="card">
+
+<div
+class="
+message
+fail
+">
+
+....실망이다...
+🔥
+
+</div>
+
+<button
+onclick="
+retry()
+">
+
+다시하기
+
+</button>
+
+</div>
+
+</div>
+
+
+
+
+<script>
+
+const questions=[
+
+"내가 좋아하는 과일은?",
+
+"오늘 내가 먹고 싶은 건?",
+
+"내가 가장 가고 싶은 나라는?",
+
+"내가 듣고 싶은 애칭은?",
+
+"내가 받고 싶은 선물은?",
+
+"내가 좋아하는 계절은?",
+
+"내가 야식으로 먹고 싶은 건?",
+
+"내가 좋아하는 색은?",
+
+"내가 요즘 꽂힌 음식은?",
+
+"내가 되고 싶은 동물은?",
+
+"내가 자주 마시는 음료는?",
+
+"내가 먹고 싶은 아이스크림 맛은?",
+
+"날 닮은 동물은?",
+
+"내가 지금 듣고 싶은 말은?",
+
+"내가 갑자기 사라지면 있을 곳은?",
+
+"내가 무인도에 가져갈 한 가지는?",
+
+"내가 세상에서 제일 편해하는 장소는?",
+
+"내가 눈 감고도 고를 간식은?",
+
+"내가 하루 종일 봐도 안 질릴 풍경은?",
+
+"내가 되고 싶은 동물은?",
+
+"내가 나를 색으로 표현하면?",
+
+"내가 나를 계절로 표현하면?",
+
+"내가 나를 날씨로 표현하면?",
+
+"내가 비밀 아지트로 삼고 싶은 곳은?",
+
+"내가 평생 하나만 먹어야 한다면?",
+
+"내가 제일 아끼는 기억 한 단어는?",
+
+"내가 밤에 잠 안 올 때 하는 건?",
+
+"내가 힘들 때 찾는 건?",
+
+"내가 기분 좋으면 하는 행동은?",
+
+"내가 가장 좋아하는 냄새는?",
+
+"내가 가장 편한 시간은?",
+
+"내가 제일 좋아하는 소리는?",
+
+"내가 자주 꾸는 분위기의 꿈은?",
+
+"내가 무조건 멈춰서 보는 건?",
+
+"내가 가장 닮았다는 말 들을 동물은?",
+
+"내가 인생 능력 하나 얻는다면?",
+
+"내가 초능력 가지면 원하는 건?",
+
+"내가 숨기고 싶은 흑역사는?",
+
+"내가 가장 오래 머물고 싶은 나라는?",
+
+"내가 다시 태어나면 되고 싶은 존재는?",
+
+"내가 마지막까지 못 버릴 물건은?",
+
+"내가 스트레스 받으면 먹는 건?",
+
+"내가 울고 나서 찾는 건?",
+
+"내가 세상에서 제일 싫어하는 건?",
+
+"내가 사람 볼 때 먼저 보는 건?",
+
+"내가 나한테 붙일 별명은?",
+
+"내가 가장 부러워하는 능력은?",
+
+"내가 가장 아끼는 추억 장소는?",
+
+"내가 갑자기 여행 간다면 갈 곳은?",
+
+"내가 몰래 해보고 싶은 건?",
+
+"내가 제일 많이 하는 생각은?",
+
+"내가 가장 좋아하는 분위기는?",
+
+"내가 오래 남기고 싶은 건?",
+
+"내가 무조건 사진 찍는 건?",
+
+"내가 행복하다고 느끼는 순간은?",
+
+"내가 무서워하는 건?",
+
+"내가 평생 듣고 싶은 말은?",
+
+"내가 가장 아끼는 감정은?",
+
+"내가 내 인생 영화로 고를 건?",
+
+"내가 죽어도 포기 못 하는 음식은?",
+
+"내가 갑자기 쉬게 되면 할 건?",
+
+"내가 기억되고 싶은 모습은?",
+
+"내가 가장 좋아하는 온도는?",
+
+"내가 마지막으로 선택할 건?",
+
+];
+
+let currentQuestion="";
+
+let previousQuestion="";
+
+let correctAnswer="";
+
+
+function showPage(id){
+
+document
+
+.querySelectorAll(
+".page"
+)
+
+.forEach(
+p=>
+
+p.classList.remove(
+"active"
+)
+
+);
+
+document
+
+.getElementById(id)
+
+.classList.add(
+"active"
+);
+
+}
+
+
+function startTest(){
+
+let availableQuestions=
+
+questions.filter(
+
+q=>
+
+q!==previousQuestion
+
+);
+
+currentQuestion=
+
+availableQuestions[
+
+Math.floor(
+
+Math.random()
+
+*
+
+availableQuestions.length
+
+)
+
+];
+
+previousQuestion=
+currentQuestion;
+
+document
+
+.getElementById(
+"questionText"
+)
+
+.innerText=
+currentQuestion;
+
+document
+
+.getElementById(
+"questionAgain"
+)
+
+.innerText=
+currentQuestion;
+
+document
+
+.getElementById(
+"answerA"
+)
+
+.value="";
+
+document
+
+.getElementById(
+"guess"
+)
+
+.value="";
+
+showPage(
+"page1"
+);
+
+}
+
+
+function saveAnswer(){
+
+correctAnswer=
+
+document
+
+.getElementById(
+"answerA"
+)
+
+.value
+
+.trim()
+
+.toLowerCase();
+
+if(
+correctAnswer===""
+){
+
+alert(
+"답 입력해줘!"
+);
+
+return;
+
+}
+
+showPage(
+"page2"
+);
+
+}
+
+
+function checkAnswer(){
+
+let user=
+
+document
+
+.getElementById(
+"guess"
+)
+
+.value
+
+.trim()
+
+.toLowerCase();
+
+if(
+user===
+correctAnswer
+){
+
+showPage(
+"successPage"
+);
+
+heartEffect();
+
+}
+
+else{
+
+showPage(
+"failPage"
+);
+
+fireEffect();
+
+}
+
+}
+
+
+function retry(){
+
+document
+
+.getElementById(
+"guess"
+)
+
+.value="";
+
+showPage(
+"page2"
+);
+
+}
+
+
+function againTest(){
+
+correctAnswer="";
+
+startTest();
+
+}
+
+
+function heartEffect(){
+
+let area=
+
+document
+
+.getElementById(
+"heartRain"
+);
+
+area.innerHTML="";
+
+for(
+let i=0;
+i<55;
+i++
+){
+
+let heart=
+
+document.createElement(
+"div"
+);
+
+heart.className=
+"rain";
+
+heart.innerHTML=
+"💖";
+
+heart.style.left=
+
+Math.random()
+*100
++"vw";
+
+heart.style.fontSize=
+
+(
+20+
+Math.random()
+*20
+)
++"px";
+
+heart.style.animationDuration=
+
+(
+2+
+Math.random()
+*3
+)
++"s";
+
+area.appendChild(
+heart
+);
+
+}
+
+}
+
+
+function fireEffect(){
+
+let area=
+
+document
+
+.getElementById(
+"fireRain"
+);
+
+area.innerHTML="";
+
+for(
+let i=0;
+i<55;
+i++
+){
+
+let fire=
+
+document.createElement(
+"div"
+);
+
+fire.className=
+"rain";
+
+fire.innerHTML=
+"🔥";
+
+fire.style.left=
+
+Math.random()
+*100
++"vw";
+
+fire.style.fontSize=
+
+(
+20+
+Math.random()
+*20
+)
++"px";
+
+fire.style.animationDuration=
+
+(
+2+
+Math.random()
+*3
+)
++"s";
+
+area.appendChild(
+fire
+);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
